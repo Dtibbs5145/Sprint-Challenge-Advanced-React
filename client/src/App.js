@@ -15,14 +15,15 @@ const App = () => {
       .get(`http://localhost:5000/api/players`)
       .then(res => setPlayers(res.data))
       .catch(err => console.log(err));
-  }, []);
+  
 
 
-  useEffect(() => {
+  // useEffect(() => {
     isDark ? document.body.classList.add('dark-mode') : document.body.classList.remove('dark-mode')
   }, [isDark]);
 
   const darkMode = (e) => {
+      console.log('toggling')
     e.preventDefault();
     setIsDark(!isDark);
     if (darkMode) {
@@ -30,16 +31,18 @@ const App = () => {
     }
   };
 
-  const toggleDarkMode = () => {
-    setIsDark(!isDark);
-  return [isDark, toggleDarkMode]
-  }
+  // const toggleDarkMode = () => {
+  //   setIsDark(!isDark);
+  // return [isDark, toggleDarkMode]
+  // }
 
   return (
-    <div className="App">
+    <div className="App darkMode">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        {/* <UseDarkMode /> */}
+        <h1>Woman's World Cup</h1>
+        <div onClick={darkMode}>
+        <img src={logo} className="App-header button App-logo" alt="logo" />
+        </div>
         <Players players={players} />
       </header>
     </div>
